@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grad School Wishlist</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #0f172a;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Mountains of Christmas', cursive;
+        }
+
+        .snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Custom Scrollbar for the games list */
+        .games-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .games-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 4px;
+        }
+        .games-scroll::-webkit-scrollbar-thumb {
+            background: #dc2626; 
+            border-radius: 4px;
+        }
+
+        .card-hover {
+            transition: transform 0.2s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen relative">
+
+    <!-- Snow Effect Canvas -->
+    <canvas id="snow" class="snow-canvas"></canvas>
+
+    <!-- Main Container -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 py-12">
+        
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <div class="inline-block bg-white/10 backdrop-blur-md border-2 border-red-500 rounded-full px-6 py-2 mb-4 animate-bounce">
+                <span class="text-red-400 font-bold tracking-wider">★ HOLIDAY EDITION ★</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 drop-shadow-[0_2px_2px_rgba(255,0,0,0.8)]">
+                Grad School Wishlist
+            </h1>
+            <p class="text-slate-300 text-lg md:text-xl italic max-w-2xl mx-auto">
+                Stocking up for the next chapter. A collection of wants, needs, and distractions.
+            </p>
+        </header>
+
+        <!-- Masonry-ish Grid for Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+
+            <!-- Music Section -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border-t-8 border-green-600 card-hover">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4 text-green-700">
+                        <i class="fa-solid fa-music text-3xl"></i>
+                        <h2 class="text-3xl font-bold">Music Room</h2>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-book-open mt-1 text-green-500"></i>
+                            <div>
+                                <span class="font-bold block">Sheet Music</span>
+                                <span class="text-sm text-gray-600">Chopin (Preludes, Ballades, Etudes), Rachmaninoff/Debussy (Late Romantic Hits)</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-guitar text-green-500"></i>
+                            <span>Guitar Strings (Replacements needed)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-plug text-green-500"></i>
+                            <span>Guitar Amp</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-clock text-green-500"></i>
+                            <span>Classic-style Mechanical Metronome</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-headphones text-green-500"></i>
+                            <span>Solid Open-Back Headphones (For Piano)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-volume-high text-green-500"></i>
+                            <span>Speakers (For Ambient Music)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Activity Section -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border-t-8 border-red-600 card-hover">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4 text-red-700">
+                        <i class="fa-solid fa-person-running text-3xl"></i>
+                        <h2 class="text-3xl font-bold">Activity & Sport</h2>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-table-tennis-paddle-ball text-red-500"></i>
+                            <span>Pickleball Paddle</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-baseball-bat-ball text-red-500"></i> <!-- approximate icon -->
+                            <span>Tennis Racket</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-futbol mt-1 text-red-500"></i>
+                            <div>
+                                <span class="font-bold block">Soccer Ball</span>
+                                <span class="text-sm text-gray-600">Preferred: Brazuca, UEFA Champions League, or Nike Order</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-shoe-prints text-red-500"></i>
+                            <span>Rock Climbing/Bouldering Shoes (Size 11.5)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Utility Section -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border-t-8 border-yellow-500 card-hover">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4 text-yellow-600">
+                        <i class="fa-solid fa-screwdriver-wrench text-3xl"></i>
+                        <h2 class="text-3xl font-bold">Utility</h2>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-hammer text-yellow-500"></i>
+                            <span>Hammer</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-screwdriver text-yellow-500"></i>
+                            <span>Drill</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass text-yellow-500"></i>
+                            <span>Stud Finder</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Deskspace Section -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border-t-8 border-blue-600 card-hover">
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4 text-blue-700">
+                        <i class="fa-solid fa-computer text-3xl"></i>
+                        <h2 class="text-3xl font-bold">Deskspace</h2>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-table text-blue-500"></i>
+                            <span>Standing Desk (>60" width)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-person-walking text-blue-500"></i>
+                            <span>Walking Pad</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Nintendo Full Width Section -->
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden border-t-8 border-purple-600 mb-12">
+            <div class="p-6 md:p-8">
+                <div class="flex items-center gap-3 mb-6 text-purple-700 border-b pb-4 border-purple-100">
+                    <i class="fa-solid fa-gamepad text-3xl"></i>
+                    <h2 class="text-3xl font-bold">The Nintendo Collection</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- GameCube Era -->
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-ghost text-purple-400"></i> Luigi's Mansion
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-fist-raised text-purple-400"></i> Super Smash Bros. Melee
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-car text-purple-400"></i> Mario Kart: Double Dash
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-sun text-purple-400"></i> Super Mario Sunshine
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-dice text-purple-400"></i> Mario Party 7
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-rocket text-purple-400"></i> Metroid Prime 2: Echoes
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-jedi text-purple-400"></i> Lego Star Wars: The Video Game
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-jedi text-purple-400"></i> Lego Star Wars II
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-pizza-slice text-purple-400"></i> TMNT
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-wind text-purple-400"></i> Avatar: The Last Airbender
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-burger text-purple-400"></i> SpongeBob: Creature from Krusty Krab
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-film text-purple-400"></i> The SpongeBob Movie Game
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-skull-crossbones text-purple-400"></i> One Piece: Grand Adventure
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-hand-fist text-purple-400"></i> Battle Stadium D.O.N.
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-spider text-purple-400"></i> Ultimate Spider-Man
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-futbol text-purple-400"></i> FIFA Street 2
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-basketball text-purple-400"></i> NBA Street vol 2
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-flag-checkered text-purple-400"></i> F1 2002
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-100 flex items-center gap-2 hover:bg-purple-100 transition">
+                        <i class="fa-solid fa-person-skating text-purple-400"></i> Tony Hawk's Pro Skater 3
+                    </div>
+                </div>
+
+                <!-- Switch Era -->
+                <div class="mt-6 pt-6 border-t border-purple-200">
+                    <h3 class="text-xl font-bold text-purple-800 mb-3">Switch</h3>
+                    <div class="p-3 bg-red-50 rounded-lg border border-red-200 flex items-center gap-2 text-red-800 font-semibold">
+                        <i class="fa-solid fa-star text-red-500"></i> Super Mario 3D All-Stars (64, Sunshine, Galaxy)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-400 text-sm pb-8">
+            <p>Happy Holidays!</p>
+        </footer>
+
+    </div>
+
+    <!-- Snow Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const canvas = document.getElementById('snow');
+            const ctx = canvas.getContext('2d');
+            
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            const snowflakes = [];
+            const maxSnowflakes = 100;
+
+            function createSnowflake() {
+                return {
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 3 + 1,
+                    speed: Math.random() * 1 + 0.5,
+                    wind: Math.random() * 1 - 0.5
+                };
+            }
+
+            for(let i = 0; i < maxSnowflakes; i++) {
+                snowflakes.push(createSnowflake());
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                ctx.beginPath();
+                
+                for(let i = 0; i < snowflakes.length; i++) {
+                    let s = snowflakes[i];
+                    ctx.moveTo(s.x, s.y);
+                    ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2, true);
+                    
+                    s.y += s.speed;
+                    s.x += s.wind;
+                    
+                    if (s.y > height) {
+                        s.y = 0;
+                        s.x = Math.random() * width;
+                    }
+                }
+                
+                ctx.fill();
+                requestAnimationFrame(update);
+            }
+
+            window.addEventListener('resize', function() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            });
+
+            update();
+        });
+    </script>
+</body>
+</html>
